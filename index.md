@@ -1,14 +1,20 @@
+# Before we get started...
+
+Depending on what lanugage you are using, this may or may not work out for you. I know that it _does_ work for Python, but it may not for another language. I know that it can be done for C/C++, but it requires further modification than this guide provides. If a few people who also rely on this method of running code in a console via a build system were to share their secrets, we could maybe compile a large collection of language specific instructions for how to edit FROM ST3 but build in an EXTERNAL console seamlessly.
+
 ## Alternatives to Sublime Text 3's Lack of Support for Console Input
 
 You're building a project. It requires user input. You proceed to check your progress, and build from within ST3. It asks for your input. And... What? It's not working? What am I doing wrong?...
 
 Sublime Text 3 does not support user input in this way. Actually, if you press CTRL + \`, you can bring up the _actual_ console, and enter `print(sys.version)`, revealing a Python 3.3.6 interpreter. What gives?
 
-When you 'build' your project in ST3, you are actually seeing the output/results of your code in the _build panel_. It's not a console, ergo, no input. There are plenty of quality reading materials already explaining the mmechanics behind how ST3 opens a pipe, etc... I'm not covering that here. I'd just explain it poorly. So, what can we do to satisfy our need to use ST3, which will allow input? Well, there are several ways we cna achieve this.
+When you 'build' your project in ST3, you are actually seeing the output/results of your code in the _build panel_. It's not a console, ergo, no input. There are plenty of quality reading materials already explaining the mechanics behind how ST3 opens a pipe, passes data to a console, streams the results back to ST3, etc... I'm not covering that here. I'd just explain it poorly. So, what can we do to satisfy our need to use ST3, which will allow input? Well, there are several ways we can achieve this.
 
-### Code in ST3, build from IDLE (or any other editor in general)
+### Edit in ST3, build from IDLE
 
 Just, no.
+
+Common suggestion. A valid one, even. I just found this to be excessively aggravating, having to open IDLE, and then search for your file.
 
 ### Plugins
 
@@ -25,11 +31,26 @@ We could use a console to run the project we're writing in the editor. Oh, we're
 
 Well, the console would have been okay, but even if we were in the correct folder, and didn't run into any hiccups, we still have to invoke python and our filename. What was our filename again? `somethingitypedwithouthtinkingbecauseimrunningoutofideasfornames.py` Oh, did you misspell that?
 
-As ridiculous as that is (both the exaggeration and the actual idea of it), we could actually use ST3's _build systems_ to get around having to enter anything in the console at all (except when we _want_ to, with user input, which is our goal, here). There are actually two different ways we can achieve the same thing. I highly recommend this first method, as it eliminate the chance for user error.
+As ridiculous as that is (both the exaggeration and the actual idea of it), we could actually use ST3's _build systems_ to accomplish our nitpicky needs.
+
+###### Goals
+
+[x] Minimal amount of steps from the editor to the testing.
+[x] Don't have to invoke the script manually
+[x] User input
+
+###### Bonus Goals
+
+[x] Build with one keypress
+[x] Run your script in an environment where end-users of your script will most likely be anyway.
+
+There are obviously going to be times when you actually have to run your script from the command line, and type it all out, such as with a command line interface you might be building. But in that case, that's exactly what you want to be doing anyway, because you want to test your arguments for your CLI.
+
+Conveniently, regardless of those two situations, you'll end up being in a console anyway. And if you aren't familiar with a console, this is a great way to ease into it. 
+
+Some people are not comfortable with downloading extra packages to accomplish a task that can be done without them. But if you would like to take the more challenging path, then I won't stop you. I'll even help you. But first, I'll explain the easiest method, by far. Skip this section if you are in the "I like to make my life more difficult because I, myself, am difficult" category.
 
 #### Duplicate the Build System
-
-Depending on what lanugage you are using, this may or may not work out for you. I know that it _does_ work for Python, but it may not for something else. 
 
 Firstly, we need a package from Package Control, called PackageResourceViewer. Once downloaded, open the command palette again, and start typing `extract`. You should see `PackageResourceViewer - Extract Package`. Click on it. Find your package within this list. We'll be using Python, and so that's what I'll be referring to from now on. Extract it. Once finished, go to `Preferences -> Browse Packages`. Find `Python`. Enter that folder. Find `Python.sublime-build`. Either right click and open with ST3, or click and drag it into an open ST3 editor.
 
@@ -137,17 +158,7 @@ Nobody likes spellcheck, so we'll use this one. Copy it from the default setting
     { "keys": ["f6"], "command": "build", "args": {"variant": "SuperConsole"} },
 ]
 ```
-If you have already set some other key bindings, they will all be BETWEEN those two square brackets., and you should already know this. If this will be your first addition to your key bindings, and it's empty, c/p it as-is. It's universal, since it's specifically for ST3. Let's take a break for a moment to very briefly explain brackets.
-
-- PARENTHESIS: ( )
-- SQUARE BRACKETS: [ ]
-- CURLY BRACKETS: { }
-~~- I'LL BE ANYTHING I DAMN WANT TO BE, LESS THAN AND GREATER THAN, ARROWS, EYES FOR FACES (>_<), ...: < >~~
-- ANGLE BRACKETS: < >
-
-< and > are not formally considered grouping symbols, as they have other official designations, such as math operators, or whatever you call it on unix where you do `cat from.txt >> to.txt`, yet here we are.
-
-Anyway, you can save your key bindings settings now, and close it. You're all good to go from here. Just go to `Tools -> Build System -> SuperPython`, and test it. Open a new file, enter `print('Hellurr?')`, save it, and use your new key binding (F6 for me), and it should pop up in a new console. And it stays open, even if the build crashes, so you can see the traceback now.
+If you have already set some other key bindings, they will all be BETWEEN those two square brackets., and you should already know this. If this will be your first addition to your key bindings, and it's empty, c/p it as-is. It's universal, since it's specifically for ST3. You can save your key binding settings now, and close it. You're all good to go from here. Just go to `Tools -> Build System -> SuperPython`, and test it. Open a new file, enter `print('Hellurr?')`, save it, and use your new key binding (`F6` for me), and it should pop up in a new console. And it stays open, even if the build crashes, so you can see the traceback, too.
 
 If a new console did not open up after building, Try building from the menu, `Tools -> Build`. It should ask you what to build with. Select the top one (or whichever one just says Python), and it should run NORMALLY in ST3. NOW try your key binding again. It should definitely work this time.
 
