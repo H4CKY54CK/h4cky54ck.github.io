@@ -73,7 +73,7 @@ See where it says "variants?" That's where we will be adding ours. We'll copy an
             "shell_cmd": "python -m py_compile \"${file}\"",
         },
         {
-            "name": "Syntax Check",
+            "name": "SuperConsole",
             "shell_cmd": "python -m py_compile \"${file}\"",
         },
     ]
@@ -83,7 +83,14 @@ See where it says "variants?" That's where we will be adding ours. We'll copy an
 Change the name to something we'll be using later, and follow the next step, according to your OS:
 
 Windows:
-- Add to the second line (it may say, "cmd", "shell_cmd", or some other thing, possibly), right after the third parentheses: `start cmd /k`
+- Change the second line in the second variant to match the very first line, "shell_cmd", and add `start cmd /k` to the front, like so:
+
+```python
+        {
+            "name": "SuperConsole",
+            "shell_cmd": "start cmd /k python -u \"${file}\"",
+        },
+```
 
 Linux:
 - Coming soon.
