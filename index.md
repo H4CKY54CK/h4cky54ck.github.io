@@ -5,7 +5,7 @@
 
 # Before we get started...
 
-To skip straight to the instructions, [click here](https://github.com/H4CKY54CK/h4cky54ck.github.io/blob/master/index.md#L58).
+To skip straight to the instructions, [click here](https://github.com/H4CKY54CK/h4cky54ck.github.io/blob/master/index.md#instructions).
 
 Depending on what lanugage you are using, this may or may not work out for you. I know that it _does_ work for Python, but it may not for another language. I know that it can be done for C/C++, but it requires further modification than this guide provides. If a few people who also rely on this method of running code in a console via a build system were to share their secrets, we could maybe compile a large collection of language specific instructions for how to edit FROM ST3 but build in an EXTERNAL console seamlessly.
 
