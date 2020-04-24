@@ -1,6 +1,6 @@
 # News
 
-***4-4-2020***
+***4-4-2020***  
     Changed the formatting, made some corrections, modified the instructions. They're more complete now, but still let me know if you find an error.
 
 # Before we get started...
@@ -42,14 +42,14 @@ As ridiculous as that is (both the exaggeration and the actual idea of it), we c
 
 #### Goals
 
-[x] Minimal amount of steps from the editor to the testing.
-[x] Don't have to invoke the script manually
-[x] User input
+[x] Minimal amount of steps from the editor to the testing.  
+[x] Don't have to invoke the script manually.  
+[x] User input.  
 
 #### Bonus Goals
 
-[x] Build with one keypress
-[x] Run your script in an environment where end-users of your script will most likely be anyway.
+[x] Build with one keypress  
+[x] Run your script in an environment where end-users of your script will most likely be anyway.  
 
 There are obviously going to be times when you actually have to run your script from the command line, and type it all out, such as with a command line interface you might be building. But in that case, that's exactly what you want to be doing anyway, because you want to test your arguments for your CLI.
 
@@ -111,7 +111,7 @@ See where it says "variants?" That's where we will be adding ours. Add a comma a
 }
 ```
 
-**(Linux (may not work on all linux, but this is what I've done for Ubuntu))**
+**(Linux (may not work on all linux, but this is what I've done for Ubuntu))**  
 (It may not look _exactly_ like this, but it will be close.)
 (You'll also need to do a quick `sudo apt install xterm`. I'm not a linux expert, so please let me know if there's a more native solution.)
 
@@ -141,7 +141,7 @@ Note how I don't have a variant field for some reason. Whatever. We'll add one.
 }
 ```
 
-**(MacOS)**
+**(MacOS)**  
 (Apparently the same thing you'd do in Windows works on MacOS. I don't have a Mac, so I can't verify this.)
 
 **I'm not comfortable putting a build system here that doesn't work, so this will have to be completed later.**
